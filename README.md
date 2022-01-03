@@ -25,6 +25,7 @@ BEDROCK LAYER:
 `
 
 TOP LAYER:
+
 `
           {
             "type": "minecraft:condition",
@@ -81,6 +82,7 @@ TOP LAYER:
 `
 
 TOP LAYER WITH SANDSTONE LAYER:
+
 `
           {
             "type": "minecraft:condition",
@@ -142,6 +144,7 @@ TOP LAYER WITH SANDSTONE LAYER:
 `
 
 DEEPSLATE LAYER:
+
 `
           {
             "type": "minecraft:condition",
