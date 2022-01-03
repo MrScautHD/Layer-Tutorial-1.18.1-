@@ -2,7 +2,7 @@
 
 BEDROCK LAYER:
 
-`
+`java
           {
             "type": "minecraft:condition",
             "if_true": {
