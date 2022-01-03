@@ -2,7 +2,7 @@
 
 (MANY IDS NAMED BY MY OWN MOD, Example: "beyond_earth:glacio", just change it to your ids)
 
-BEDROCK LAYER:
+BEDROCK LAYER (you need a Custom Chunk Generator to fix caves (Noodle caves...) generate in the bedrock):
 
 ```json
           {
