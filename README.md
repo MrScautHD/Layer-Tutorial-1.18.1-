@@ -1,8 +1,8 @@
-# Layer-Tutorial-1.18.1-
+# Layer Tutorial-1.18.1
 
 BEDROCK LAYER:
 
-`java
+`
           {
             "type": "minecraft:condition",
             "if_true": {
@@ -142,7 +142,6 @@ TOP LAYER WITH SANDSTONE LAYER:
 `
 
 DEEPSLATE LAYER:
-
 `
           {
             "type": "minecraft:condition",
