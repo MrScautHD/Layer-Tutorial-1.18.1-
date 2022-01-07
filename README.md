@@ -145,7 +145,7 @@ TOP LAYER WITH SANDSTONE LAYER:
           }
 ```
 
-POWDER SNOW:
+POWDER SNOW WITH TOP AND SANDSTONE LAYER:
 ```json
           {
             "type": "minecraft:condition",
@@ -157,24 +157,66 @@ POWDER SNOW:
               ]
             },
             "then_run": {
-              "type": "minecraft:sequence",
-              "sequence": [
-                {
-                  "type": "minecraft:condition",
-                  "if_true": {
-                    "type": "minecraft:noise_threshold",
-                    "noise": "minecraft:powder_snow",
-                    "min_threshold": 0.35,
-                    "max_threshold": 0.6
-                  },
-                  "then_run": {
-                    "type": "minecraft:block",
-                    "result_state": {
-                      "Name": "minecraft:powder_snow"
+              "type": "minecraft:condition",
+              "if_true": {
+                "type": "minecraft:y_above",
+                "anchor": {
+                  "absolute": 87
+                },
+                "surface_depth_multiplier": 2,
+                "add_stone_depth": false
+              },
+              "then_run": {
+                "type": "minecraft:condition",
+                "if_true": {
+                  "type": "minecraft:water",
+                  "offset": -2,
+                  "surface_depth_multiplier": 0,
+                  "add_stone_depth": false
+                },
+                "then_run": {
+                  "type": "minecraft:sequence",
+                  "sequence": [
+                    {
+                      "type": "minecraft:condition",
+                      "if_true": {
+                        "type": "minecraft:noise_threshold",
+                        "noise": "minecraft:powder_snow",
+                        "min_threshold": 0.35,
+                        "max_threshold": 0.6
+                      },
+                      "then_run": {
+                        "type": "minecraft:block",
+                        "result_state": {
+                          "Name": "minecraft:powder_snow"
+                        }
+                      }
+                    },
+                    {
+                      "type": "minecraft:condition",
+                      "if_true": {
+                        "type": "minecraft:stone_depth",
+                        "offset": 1,
+                        "surface_type": "floor",
+                        "add_surface_depth": false,
+                        "add_surface_secondary_depth": false
+                      },
+                      "then_run": {
+                        "type": "minecraft:block",
+                        "result_state": {
+                          "Name": "minecraft:snow_block"
+                        }
+                      }
+                    },
+                    {
+                      "type": "minecraft:block",
+                      "result_state": {
+                        "Name": "minecraft:packed_ice"
+                      }
                     }
-                  }
+                  ]
                 }
-              ]
+              }
             }
           },
 ```
@@ -255,7 +297,66 @@ EXAMPLE FILE HOW IT LOOK IN THE FULL CODE:
         "terrain_shaper": {
           "offset": 0.3,
           "factor": 4,
-          "jaggedness": 0
+          "jaggedness": {
+            "coordinate": "continents",
+            "points": [
+              {
+                "location": 0,
+                "derivative": 0.8,
+                "value": {
+                  "coordinate": "erosion",
+                  "points": [
+                    {
+                      "location": 0,
+                      "derivative": 0,
+                      "value": {
+                        "coordinate": "weirdness",
+                        "points": [
+                          {
+                            "location": 0,
+                            "derivative": 0,
+                            "value": 0
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "location": 0,
+                "derivative": 0,
+                "value": {
+                  "coordinate": "continents",
+                  "points": [
+                    {
+                      "location": 0,
+                      "derivative": 0,
+                      "value": {
+                        "coordinate": "erosion",
+                        "points": [
+                          {
+                            "location": 0,
+                            "derivative": 0,
+                            "value": {
+                              "coordinate": "weirdness",
+                              "points": [
+                                {
+                                  "location": 0,
+                                  "derivative": 0,
+                                  "value": 0
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
         }
       },
       "surface_rule": {
@@ -311,6 +412,21 @@ EXAMPLE FILE HOW IT LOOK IN THE FULL CODE:
                 "then_run": {
                   "type": "minecraft:sequence",
                   "sequence": [
+                    {
+                      "type": "minecraft:condition",
+                      "if_true": {
+                        "type": "minecraft:noise_threshold",
+                        "noise": "minecraft:powder_snow",
+                        "min_threshold": 0.35,
+                        "max_threshold": 0.6
+                      },
+                      "then_run": {
+                        "type": "minecraft:block",
+                        "result_state": {
+                          "Name": "minecraft:powder_snow"
+                        }
+                      }
+                    },
                     {
                       "type": "minecraft:condition",
                       "if_true": {
