@@ -145,6 +145,40 @@ TOP LAYER WITH SANDSTONE LAYER:
           }
 ```
 
+POWDER SNOW:
+```json
+          {
+            "type": "minecraft:condition",
+            "if_true": {
+              "type": "minecraft:biome",
+              "biome_is": [
+                "beyond_earth:glacio",
+                "beyond_earth:glacio_ice_spikes"
+              ]
+            },
+            "then_run": {
+              "type": "minecraft:sequence",
+              "sequence": [
+                {
+                  "type": "minecraft:condition",
+                  "if_true": {
+                    "type": "minecraft:noise_threshold",
+                    "noise": "minecraft:powder_snow",
+                    "min_threshold": 0.35,
+                    "max_threshold": 0.6
+                  },
+                  "then_run": {
+                    "type": "minecraft:block",
+                    "result_state": {
+                      "Name": "minecraft:powder_snow"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+```
+
 DEEPSLATE LAYER:
 
 ```json
